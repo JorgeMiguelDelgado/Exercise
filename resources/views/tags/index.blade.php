@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Categoria')
+@section('title', 'Etiquetas')
 
 @section('content_header')
-    <h1>Categoria de notas</h1>
+    <h1>Etiquetas</h1>
 @stop
 
 @section('content')
@@ -11,9 +11,9 @@
         <div class="panel-heading">
 
 
-            <a href="{{ route('categories.create') }}" class="btn btn-primary btn-xs pull-right" role="button">
+            <a href="{{ route('tags.create') }}" class="btn btn-primary btn-xs pull-right" role="button">
 
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <b>Agregar nueva categoria</b>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <b>Agregar nueva etiqueta</b>
             </a>
 
 
@@ -34,22 +34,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $cat)
+                    @foreach ($tags as $tag)
                         <tr>
-                            <td>{{ $cat->name }}</td>
-                            <td>{{ $cat->description }}</td>
+                            <td>{{ $tag->name }}</td>
+                            <td>{{ $tag->description }}</td>
 
 
                             <td class="border px-4 py-2 btn-group-vertical-justified ">
-                                <a href="{{ route('categories.edit', ['category' => $cat]) }}"
+                                <a href="{{ route('tags.edit', ['tag' => $tag]) }}"
                                     class="btn btn-primary btn-flat"><i class="fas fa-edit"></i></a>
                                 <a href="#" class="btn btn-danger btn-flat delete_result"
                                     onclick="event.preventDefault();
-                            document.getElementById('delete-cat-{{ $cat->id }}-form').submit();"><i
+                            document.getElementById('delete-tag-{{ $tag->id }}-form').submit();"><i
                                         class="fas fa-trash"></i>
                                 </a>
-                                <form id="delete-cat-{{ $cat->id }}-form"
-                                    action="{{ route('categories.destroy', ['category' => $cat]) }}" method="POST"
+                                <form id="delete-tag-{{ $tag->id }}-form"
+                                    action="{{ route('tags.destroy', ['tag' => $tag]) }}" method="POST"
                                     class="hidden">
                                     @method('DELETE')
                                     @csrf
@@ -62,7 +62,6 @@
 
         </div>
     </div>
-
 @stop
 
 @section('css')
