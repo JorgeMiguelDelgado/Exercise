@@ -27,4 +27,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('categories', CategorieController::class);
 Route::resource('tags', TagController::class);
+
+
 Route::resource('notes', NoteController::class);
+Route::put('notes/{id}/estado', 'App\Http\Controllers\NoteController@estado');
+Route::get('notesarch', [NoteController::class, 'archivadas'])->name('notes.archivadas');

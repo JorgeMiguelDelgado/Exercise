@@ -11,10 +11,6 @@
         <div class="panel-heading">
 
 
-            <a href="{{ route('notes.create') }}" class="btn btn-primary btn-xs pull-right" role="button">
-
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <b>Agregar nueva nota</b>
-            </a>
 
 
         </div>
@@ -39,6 +35,9 @@
                                     <center><i class="fas fa-check-circle" style="color: green"></i></center>
                                 </td>
                             @else
+                            <td>
+                                <center><i class="fas fa-times-circle" style="color: red"></i></center>
+                            </td>
                             @endif
 
 

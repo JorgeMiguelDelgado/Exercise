@@ -10,11 +10,26 @@ use Illuminate\Http\Request;
 class NoteController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $notes                  =       Note::with('category', 'tags')->paginate(10);
+        $notes                  =       Note::with('category', 'tags')->where('status', 1)->paginate(10);
 
         return view('notes.index', compact("notes"), [
+            'category'          =>      Category::get(),
+            'tags'               =>      Tag::get(),
+        ]);
+    }
+
+    public function archivadas()
+    {
+        $notes                  =       Note::with('category', 'tags')->where('status', 2)->paginate(10);
+
+        return view('notes.archivadas', compact("notes"), [
             'category'          =>      Category::get(),
             'tags'               =>      Tag::get(),
         ]);
@@ -77,6 +92,21 @@ class NoteController extends Controller
     {
         $note->delete();
 
+        return back();
+    }
+
+    public function estado($id)
+    {
+        $note=  Note::findOrFail($id);
+        if($note->status == 1)
+        {
+            $note->status= 2;
+            $note->update();
+        }else{
+            $note->status= 1;
+            $note->update();
+        }
+        
         return back();
     }
 }
