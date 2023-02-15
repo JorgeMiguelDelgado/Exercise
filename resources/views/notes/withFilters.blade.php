@@ -23,7 +23,7 @@
                             <label for="tag" class="col-md-2 col-form-label text-md-right">Etiqueta:</label>
                             <div class="col-md-6">
                                 <select name="tags" class="form-control">
-                                    <option value="">Selecciona una etiqueta</option>
+                                    <option value="">Seleccionar una etiqueta</option>
                                     @foreach ($tags as $tag)
                                     <option value="{{ $tag->id }}" @if (request('tags') == $tag->id) selected @endif>{{ $tag->name }}</option>
                                     @endforeach
