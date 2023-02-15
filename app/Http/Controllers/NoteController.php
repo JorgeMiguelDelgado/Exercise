@@ -109,4 +109,37 @@ class NoteController extends Controller
         
         return back();
     }
+
+    public function showNotesWithFilters(Request $request)
+    {
+    
+    $notes = Note::query();
+    
+    if ($request->has('note_id')) {
+        $notes->whereHas('tags', function ($query) use ($request) {
+            $query->where('tags.id', '=', $request->input('tags'));
+        });
+    }
+    
+
+    if ($request->has('category_id')) {
+        $notes->whereHas('category', function ($query) use ($request) {
+            $query->where('id', $request->input('category_id'));
+        });
+    }
+
+    $notes = $notes->orderBy('created_at', 'desc')->get();
+
+    $tags = Tag::orderBy('name', 'asc')->get();
+    $categories = Category::orderBy('name', 'asc')->get();
+
+    return view('notes.withFilters', [
+        'notes' => $notes,
+        'tags' => $tags,
+        'categories' => $categories,
+        'selectedTag' => $request->input('tags'),
+        'selectedCategory' => $request->input('category_id'),
+    ]);
+    }
+
 }

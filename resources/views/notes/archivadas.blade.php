@@ -42,7 +42,7 @@
 
 
                             @foreach ($category as $cat)
-                                @if ($note->category == $cat->id)
+                                @if ($note->category_id == $cat->id)
                                     <td>{{ $cat->name }} </td>
                                 @endif
                             @endforeach

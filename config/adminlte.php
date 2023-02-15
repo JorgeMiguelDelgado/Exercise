@@ -294,48 +294,37 @@ return [
         // Navbar items:
         
         [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
+            'type'              => 'fullscreen-widget',
+            'topnav_right'      => true,
         ],
         [
-            'type'         => 'darkmode-widget',
-            'topnav_right' => true, // Or "topnav => true" to place on the left.
+            'type'              => 'darkmode-widget',
+            'topnav_right'      => true, // Or "topnav => true" to place on the left.
         ],
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'type'              => 'sidebar-menu-search',
+            'text'              => 'search',
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'              => 'blog',
+            'url'               => 'admin/blog',
+            'can'               => 'manage-blog',
         ],
         [
-            'text'        => 'Inicio',
-            'url'         => 'home',
-            'icon'        => 'fas fa-home',
-            'icon_color'  => 'blue'
+            'text'              => 'Inicio',
+            'url'               => 'home',
+            'icon'              => 'fas fa-home',
+            'icon_color'        => 'blue'
         ],
-        ['header' => 'Lista de tareas'],
+        ['header'               => 'Lista de tareas'],
         
         [
-            'text'    => 'Notas',
-            'icon'    => 'fas fa-book',
-            'submenu' => [
-                [
-                    'text'      => 'Categorias',
-                    'route'     => 'categories.index',
-                    'icon'      => 'fas fa-folder-open',
-                    'icon_color'=> 'blue',
-                ],
-                [
-                    'text'      =>  'Etiquetas',
-                    'route'     =>  'tags.index',
-                    'icon'      =>  'fas fa-tag',
-                    'icon_color'=>  'blue',
-                ],
+            'text'              => 'Notas',
+            'icon'              => 'fas fa-book',
+            'submenu'           => [
+                
                 [
                     'text'      =>  'Notas',
                     'route'     =>  'notes.index',
@@ -347,6 +336,24 @@ return [
                     'route'     =>  'notes.archivadas',
                     'icon'      =>  'fas fa-th-list',
                     'icon_color'=>  'red',
+                ],
+            ],
+        ],
+        [
+            'text'              =>  'Ajustes',
+            'icon'              =>  'fas fa-cog',
+            'submenu'           =>  [
+                [
+                    'text'      => 'Categorias',
+                    'route'     => 'categories.index',
+                    'icon'      => 'fas fa-folder-open',
+                    'icon_color'=> 'blue',
+                ],
+                [
+                    'text'      =>  'Etiquetas',
+                    'route'     =>  'tags.index',
+                    'icon'      =>  'fas fa-tag',
+                    'icon_color'=>  'blue',
                 ],
             ],
         ],

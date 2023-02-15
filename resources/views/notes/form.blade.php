@@ -40,9 +40,9 @@
 
     <div class="form-group">
         <label for="name">{{ __('Categoria') }}</label>
-        <select class="form-control" name="category" id="category">
+        <select class="form-control" name="category_id" id="category_id">
             @foreach ($categories as $cat)
-                <option value="{{ $cat->id }}"{{ old('category', $note->category) == $cat->id ? 'selected' : '' }}>
+                <option value="{{ $cat->id }}"{{ old('category', $note->category_id) == $cat->id ? 'selected' : '' }}>
                     {{ $cat->name }}</option>
             @endforeach
         </select>
